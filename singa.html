@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Rusinga Trading · professional cleaning | modern showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        .product-card {
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            will-change: transform;
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 28px -6px rgba(0, 70, 50, 0.12);
+            border: 1px solid rgba(209, 250, 229, 0.6);
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 38px -12px rgba(5, 100, 70, 0.25);
+            border-color: #10b981;
+        }
+
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #f0fdf4;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.02);
+        }
+
+        .category-chip {
+            background: white;
+            border: 1px solid #d1fae5;
+            color: #065f46;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.15s;
+            box-shadow: 0 2px 6px rgba(0, 60, 40, 0.03);
+            white-space: nowrap;
+        }
+
+        .category-chip:hover {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+            box-shadow: 0 10px 18px -8px rgba(16, 185, 129, 0.4);
+        }
+
+        .partner-logo {
+            width: 140px;
+            height: 90px;
+            object-fit: contain;
+            background: white;
+            border-radius: 1.2rem;
+            padding: 0.6rem 1rem;
+            box-shadow: 0 5px 14px rgba(0, 60, 30, 0.06);
+            transition: all 0.2s;
+            border: 1px solid #e4f5e9;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.03);
+            border-color: #34d399;
+            box-shadow: 0 15px 22px -10px #04785740;
+        }
+
+        .float-social {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .float-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.3rem;
+            height: 3.3rem;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 15px 28px -8px rgba(2, 84, 63, 0.3);
+            color: #115e59;
+            font-size: 1.8rem;
+            transition: all 0.2s ease;
+            border: 1px solid #ccf0db;
+            backdrop-filter: blur(4px);
+        }
+
+        .float-social a:hover {
+            background: #0d9488;
+            color: white;
+            transform: translateY(-5px) scale(1.08);
+            border-color: #fcd34d;
+        }
+
+        .gradient-overlay {
+            background: linear-gradient(92deg, #0f3b3a 0%, #1e635a 70%);
+        }
+
+        .current-price {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #0b4f4c;
+            line-height: 1.2;
+        }
+
+        .old-price {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: 400;
+        }
+
+        @media (max-width: 640px) {
+            .product-card .current-price {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-gray-800 antialiased">
+
+    <!-- ===== FLOATING SOCIAL ===== -->
+    <div class="float-social">
+        <a href="https://wa.me/254733336362?text=Hello%20Rusinga%20Trading" target="_blank" title="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+        <a href="tel:+254207856955" title="Call 0207 856 955"><i class="fas fa-phone-alt"></i></a>
+        <a href="mailto:info@rusingatrading.co.ke" title="Email"><i class="far fa-envelope"></i></a>
+        <a href="https://www.instagram.com/Rusinga83" target="_blank" title="Instagram"><i
+                class="fab fa-instagram"></i></a>
+        <a href="https://web.facebook.com/profile.php?id=61572958184293" target="_blank" title="Facebook"><i
+                class="fab fa-facebook"></i></a>
+    </div>
+
+    <!-- ===== STICKY NAVIGATION ===== -->
+    <nav class="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-emerald-100 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <img src="logo.jpg" alt="Rusinga"
+                    class="w-10 h-10 rounded-full border-2 border-emerald-200 object-cover">
+                <span class="font-bold text-xl text-emerald-900 tracking-tight">Rusinga<span class="text-amber-600">
+                        Trading</span></span>
+            </div>
+            <div class="hidden md:flex gap-7 text-emerald-800 font-medium">
+                <a href="#" class="hover:text-amber-700 transition">Home</a>
+                <a href="#about" class="hover:text-amber-700 transition">About</a>
+                <a href="#products" class="hover:text-amber-700 transition">Products</a>
+                <a href="#partners" class="hover:text-amber-700 transition">Partners</a>
+                <a href="#contact" class="hover:text-amber-700 transition">Contact</a>
+            </div>
+            <div class="flex gap-2">
+                <span
+                    class="bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm font-semibold hidden sm:block"><i
+                        class="far fa-user mr-1"></i> trade</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO BANNER ===== -->
+    <section class="relative bg-banner min-h-[85vh] flex items-center"
+        style="background-image: url('main_banner\ .jpeg'); background-size: 80% auto; background-position: center 20%;">
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/70 via-teal-900/50 to-emerald-800/40"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20 text-white">
+            <div class="max-w-2xl">
+                <div class="flex items-center gap-4 mb-6">
+                    <h1 class="text-5xl md:text-7xl font-black tracking-tight drop-2xl">Rusinga<span
+                            class="text-amber-300"> Trading</span></h1>
+                </div>
+                <p class="text-3xl md:text-5xl font-light italic mb-4 drop-shadow border-l-8 border-amber-300 pl-6">
+                    First Impression Starts With Clean</p>
+                <div
+                    class="flex flex-wrap gap-2 text-sm md:text-base mt-6 bg-black/30 backdrop-blur-sm p-4 rounded-2xl w-fit">
+                    <span class="px-3 py-1 bg-white/20 rounded-full">LAUNDRY</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full">KITCHEN</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full">FLOOR CARE</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full">HOUSEKEEPING</span>
+
+                </div>
+                
+
+
+
+                <div class="flex flex-wrap gap-3 mt-8">
+                    <span class="bg-emerald-800/80 text-white px-5 py-2 rounded-full text-lg shadow-md"><i
+                            class="fas fa-industry mr-2"></i>commercial grade</span>
+                    <span class="bg-teal-700/80 text-white px-5 py-2 rounded-full text-lg shadow-md"><i
+                            class="fas fa-leaf mr-2"></i>eco friendly</span>
+                    <span class="bg-amber-600/80 text-white px-5 py-2 rounded-full text-lg shadow-md"><i
+                            class="fas fa-soap mr-2"></i>effective</span>
+                </div>
+                <a href="#products"
+                    class="mt-12 inline-flex items-center gap-3 bg-amber-400 hover:bg-amber-300 text-gray-900 font-bold px-8 py-4 rounded-full text-xl shadow-2xl transition-all"><i
+                        class="fas fa-chevron-down"></i> shop products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DISCOVER CATEGORIES ===== -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-5xl md:text-6xl font-light text-emerald-900 mb-2 tracking-tight">DISCOVER YOUR <span
+                    class="font-black text-amber-700">PERFECT CLEAN</span></h2>
+            <div class="flex flex-wrap justify-center gap-3 overflow-x-auto pb-2 no-scrollbar">
+                <span class="category-chip">Softener</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT US ===== -->
+    <section id="about" class="py-16 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 grid gap-10 lg:grid-cols-2">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold text-emerald-900 mb-6">About Us</h2>
+                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                    Rusinga Trading Company is a fast-growing manufacturer and supplier of high-quality cleaning and
+                    personal care products, specializing in multipurpose liquid soap, toilet disinfectants, hand wash,
+                    bar soap, fabric softeners, and industrial degreasers etc. Our mission is to provide affordable,
+                    eco-friendly, and effective hygiene solutions for homes, businesses, and institutions.
+                </p>
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    With a strong commitment to quality, innovation, and customer satisfaction, we use carefully
+                    selected raw materials and adhere to industry standards to ensure that every product delivers
+                    excellent performance and safety.
+                </p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-emerald-100">
+                    <h3 class="text-2xl font-bold text-emerald-800 mb-3">Our Vision</h3>
+                    <p class="text-gray-600">To be a leading brand in the hygiene and sanitation industry in East
+                        Africa, known for quality, affordability, and environmental responsibility.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-emerald-100">
+                    <h3 class="text-2xl font-bold text-emerald-800 mb-3">Our Mission</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>To produce superior-quality cleaning and personal care products.</li>
+                        <li>To promote hygiene and health in communities.</li>
+                        <li>To offer sustainable and eco-conscious manufacturing practices.</li>
+                        <li>To create employment and empower local communities.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-emerald-100 sm:col-span-2">
+                    <h3 class="text-2xl font-bold text-emerald-800 mb-3">Core Values</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">Quality
+                            Assurance</span>
+                        <span
+                            class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">Customer
+                            Satisfaction</span>
+                        <span
+                            class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">Integrity</span>
+                        <span
+                            class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">Innovation</span>
+                        <span
+                            class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">Environmental
+                            Responsibility</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section id="why-us" class="py-16 bg-white border-y border-teal-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-emerald-900 text-center mb-10">Why Choose Us</h2>
+            <div class="grid gap-8 lg:grid-cols-3">
+                <div class="bg-emerald-50 p-6 rounded-3xl border border-emerald-100">
+                    <h3 class="text-2xl font-bold text-emerald-800 mb-4">Our Commitment to Quality and Safety</h3>
+                    <p class="text-gray-600 mb-3">We take product quality seriously. We aim to use appropriate raw
+                        materials, follow controlled production procedures, maintain clean production and storage areas,
+                        and use suitable containers.</p>
+                    <p class="text-gray-600 mb-3">We also recognize the importance of proper labelling, safe handling
+                        instructions, batch identification, and applicable regulatory requirements.</p>
+                    <p class="text-gray-600">We provide accurate information about our products and avoid making
+                        unsupported claims about their performance, safety, or suitability.</p>
+                </div>
+                <div class="bg-emerald-50 p-6 rounded-3xl border border-emerald-100">
+                    <h3 class="text-2xl font-bold text-emerald-800 mb-4">What Makes Us Different</h3>
+                    <p class="text-gray-600 mb-3">We aim to stand out through five key commitments:</p>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li><strong>Value for money:</strong> Fair and competitive pricing.</li>
+                        <li><strong>Consistency:</strong> A commitment to maintaining product quality from batch to
+                            batch.</li>
+                        <li><strong>Convenience:</strong> Practical packaging options for regular users and bulk buyers.
+                        </li>
+                        <li><strong>Professionalism:</strong> Clear communication, honest product information, and
+                            transparent ordering arrangements.</li>
+                        <li><strong>Long-term partnerships:</strong> Building lasting relationships with retailers,
+                            distributors, and institutional customers.</li>
+                    </ul>
+                </div>
+                <div class="bg-emerald-50 p-6 rounded-3xl border border-emerald-100">
+                    <h3 class="text-2xl font-bold text-emerald-800 mb-4">Suitable for Different Customers</h3>
+                    <p class="text-gray-600 mb-3">We serve different customer categories, including retailers,
+                        wholesalers, households, institutions, and commercial establishments.</p>
+                    <p class="text-gray-600">We can discuss order quantities, product options, and supply arrangements
+                        depending on our production capacity and the customer's needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS GRID ===== -->
+    <section id="products" class="pb-24 pt-6 bg-gradient-to-b from-emerald-50/30 to-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- Product 1 -->
+                <div class="product-card group">
+                    <div class="overflow-hidden">
+                        <img src="commercial_detergent.jpeg" alt="Commercial Detergent" class="product-img"
+                            loading="lazy">
+                    </div>
+                    <div class="p-5 md:p-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800">Singa Commercial Detergent</h3>
+                        <p class="text-sm text-gray-500 mt-1 line-clamp-2">heavy duty, low suds – industrial strength
+                        </p>
+                        <div class="mt-3 flex items-center text-amber-500 text-sm"><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star-half-alt"></i><span class="text-gray-500 ml-2">premium</span></div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card group">
+                    <img src="fabric-softener.jpeg" alt="Fabric Softener" class="product-img" loading="lazy">
+                    <div class="p-5 md:p-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800">Singa Fabric Softener</h3>
+                        <p class="text-sm text-gray-500">long lasting freshness, anti static</p>
+                        <div class="mt-3 flex items-center text-amber-500"><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><span class="text-gray-500 ml-2">best seller</span></div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card group">
+                    <img src="regular_bleach.jpeg" alt="Regular Bleach" class="product-img" loading="lazy">
+                    <div class="p-5 md:p-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800">Singa Regular Bleach</h3>
+                        <p class="text-sm text-gray-500">stain removal & whitening power</p>
+                        <div class="mt-3 flex items-center text-amber-500"><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="far fa-star"></i><span class="text-gray-500 ml-2">strong</span></div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card group">
+                    <img src="washing_liquid.jpeg" alt="Washing Liquid" class="product-img" loading="lazy">
+                    <div class="p-5 md:p-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-800">Singa Washing Liquid</h3>
+                        <p class="text-sm text-gray-500">deep clean for laundry & delicate</p>
+                        <div class="mt-3 flex items-center text-amber-500"><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><span class="text-gray-500 ml-2">gentle</span></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-emerald-600 text-sm mt-10 opacity-70"><i class="far fa-clock mr-1"></i> trade
+                discounts available • bulk pricing on request</p>
+        </div>
+    </section>
+
+    <!-- ===== PARTNERS ===== -->
+    <section id="partners" class="py-20 bg-white border-y border-teal-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-emerald-800 mb-3">🤝 our partners</h2>
+            <p class="text-gray-600 text-lg mb-12">trusted by leading suppliers for quality & consistency</p>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+                <img src="our_patner1.jpeg" alt="partner" class="partner-logo" loading="lazy">
+                <img src="our_patner2.jpeg" alt="partner" class="partner-logo" loading="lazy">
+                <img src="our_patner3.jpeg" alt="partner" class="partner-logo" loading="lazy">
+                <img src="our_patner4.jpeg" alt="partner" class="partner-logo" loading="lazy">
+                <img src="our_patner5.jpeg" alt="partner" class="partner-logo" loading="lazy">
+                <img src="our_patner6.jpeg" alt="partner" class="partner-logo" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KEY VALUE PROPS ===== -->
+    <section class="py-14 bg-emerald-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div><i class="fas fa-truck-fast text-5xl text-amber-300 mb-4"></i>
+                <h3 class="text-2xl font-bold">Nationwide delivery</h3>
+                <p class="text-emerald-100">within 24-48 hrs</p>
+            </div>
+            <div><i class="fas fa-certificate text-5xl text-amber-300 mb-4"></i>
+                <h3 class="text-2xl font-bold">Commercial grade</h3>
+                <p class="text-emerald-100">trusted by hotels & hospitals</p>
+            </div>
+            <div><i class="fas fa-hand-holding-heart text-5xl text-amber-300 mb-4"></i>
+                <h3 class="text-2xl font-bold">Eco conscious</h3>
+                <p class="text-emerald-100">biodegradable & safe</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="py-20 bg-stone-100">
+        <div class="max-w-4xl mx-auto px-4">
+            <div
+                class="bg-white/80 backdrop-blur-sm p-8 md:p-12 rounded-4xl shadow-2xl border border-teal-200 text-center">
+                <h2 class="text-4xl font-bold text-emerald-800 mb-8">📞 get in touch</h2>
+                <div class="text-xl md:text-2xl space-y-4">
+                    <p><i class="fas fa-phone-alt text-emerald-700 mr-4"></i>0207 856 955 <span
+                            class="text-gray-300 mx-3">|</span> <i
+                            class="fab fa-whatsapp text-emerald-700 mr-2"></i>0733 336 362</p>
+                    <p><i class="far fa-envelope text-emerald-700 mr-4"></i>info@rusingatrading.co.ke</p>
+                    <p><i class="fas fa-map-marker-alt text-emerald-700 mr-4"></i>Nairobi, Kenya</p>
+                    <p class="text-sm text-gray-400 mt-8">*call or whatsapp for trade prices & samples</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-emerald-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+                <img src="logo.jpg" alt="logo" class="w-8 h-8 rounded-full border border-white/60">
+                <span class="font-semibold text-xl">Rusinga Trading Company</span>
+            </div>
+            <p class="text-emerald-200 text-sm md:text-base">✨ First Impression Starts With Clean</p>
+            <p class="text-sm text-emerald-300">© 2025 Rusinga Trading — professional cleaning solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const footerYear = document.querySelector('footer p:last-child');
+            if (footerYear) {
+                const currentYear = new Date().getFullYear();
+                footerYear.innerHTML = footerYear.innerHTML.replace('2025', currentYear);
+            }
+        })();
+    </script>
+</body>
+
+</html>
